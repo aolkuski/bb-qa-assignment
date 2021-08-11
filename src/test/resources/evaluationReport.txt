@@ -1,5 +1,3 @@
-
-
 SUGGESTIONS FOR IMPROVEMENTS
 App entry 'screen'
 - app access behind more sophisticated authentication
@@ -50,6 +48,7 @@ BUGS
 - [critical] Token after logout action is still working (logout via UI, token used via REST Api)
 - Slug is not changed once the article's title is changed (should be changed according to the documentation)
 - Once an article is deleted, moving back to previous page (for example profile) results in 404 returned in a json. Only navigation to the main page helps.
+- "Required fields" presence for article creation is not validated ('description' and 'body') can be missing
 
 3) Found during automation
 
@@ -57,4 +56,5 @@ BUGS
 NOTES
 - Data testing should not be done on the UI, thus there ae no such tests
 - Tests are small as possible to give a quick feedback on what is broken (if something is)
-- Areas of my choice are the ones, which are critical for the application to be functional: CRUD on the articles and user registration/login, however due to 'social' function of AUT, I did also consider creating tests for likes, favorites and comments.
+- Areas of my choice are the ones, which are critical for the application to be functional: creating the articles and user registration.
+- Looking at the assignment body, 'CRUD Articles' may look like a single functionality, however I decided that these are 4 functionalities which can be implemented independently. Therefore, tests cases cover only 1 of them (+ registration as another functionality).

@@ -1,11 +1,122 @@
-Manual Test Cases for BBlog
+---  Manual Test Cases for BBlog ----
+AREA COVERED:
+- Registration
 
-Area to cover:
-Registration
+LIST OF TESTS:
+1. User should be able to register with unique data via UI
+2. User should be able to register with unique data via REST Api
+3. User should not be able to register with existing mail or existing username via UI
+4. User should not be able to register with existing mail or username via REST Api
+5. User should not be able to register without mail or password via UI
+6. User should not be able to register without mail or password via REST Api
+7. User should not be able to do SQL injection via any of fields via UI
+8. User should not be able to do SQL injection via any of fields via REST Api
+9. User should be able to navigate to Sign in page using 'Have an account?' link
+10. Registration page layout is not broken
+11. User should not be able to sign up with malformed email via UI
+12. User should not be able to sign up with malformed email via REST Api
 
-1. Register new user
-1.1 Register new user with unique data via UI
-1.2 Register new user with unique data via REST Api
-1.3 Register user with existing mail
-1.4 Register user with blank mail/password
+1. User should be able to register with unique data via UI
+    Steps:
+        1. Open application and click 'Sign up' link
+        2. Insert unique username, valid email and any password
+        3. Click 'Sign up' button
+    Expectation:
+        - User is signed in
+        - User is redirected to Home page / Your Feed
+        - Provided username is shown in the right upper corner of the Home page
+        - 'New Article' and 'Settings' links are present
+
+2. User should be able to register with unique data via REST Api
+    Preconditions:
+        - User is authorized with Basic Authorization
+    Steps:
+        1. Send POST request with unique username, unique email and any password
+    Expectation:
+        - 200 response is returned
+        - Token is returned
+
+3. User should not be able to register with existing mail or existing username via UI
+    Preconditions:
+        - User with some email and username already exists in the system
+    Steps:
+        1. Open application and click 'Sign up' link
+        2. Insert existing username, existing email and any password
+        3. Click 'Sign up' button
+    Expectation:
+        - 2 errors show up: {username is already taken; email is already taken}
+        - User is not signed in
+
+4. User should not be able to register with existing mail or username via REST Api
+    Preconditions:
+        - User is authorized with Basic Authorization
+    Steps:
+        1. Send POST request with existing username, existing email and any password
+    Expectation:
+        - 409 or 422 error is returned with meaningful error description
+
+5. User should not be able to register without mail or password via UI
+    Steps:
+        1. Open application and click 'Sign up' link
+        2. Insert only password
+    Expectation:
+        - Sign up button is disabled
+
+6. User should not be able to register without mail or password via REST Api
+    Preconditions:
+        - User is authorized with Basic Authorization
+    Steps:
+        1. Send POST request only with password filled in
+    Expectation:
+        - 409 or 422 error is returned with meaningful error description
+
+7. User should not be able to do SQL injection via any of fields via UI
+    Steps:
+        1. Open application and click 'Sign up' link
+        2. Insert 'SELECT * FROM Users WHERE UserId = 105 OR 1=1;' into password
+        3. Insert unique username and unique mail
+        4. Click 'Sign up' button
+    Expectation:
+        - User should be navigated to home page without errors
+
+8. User should not be able to do SQL injection via any of fields via REST Api
+    Preconditions:
+        - User is authorized with Basic Authorization
+    Steps:
+        1. Send POST request only with password = 'SELECT * FROM Users WHERE UserId = 105 OR 1=1;', unique username and unique email
+    Expectation:
+        - 200 is returned
+        - Token is returned
+
+9. User should be able to navigate to Sign in page using 'Have an account?' link
+    Steps:
+        1. Open application and click 'Sign up' link
+        2. Click 'Have an account?' link
+    Expectation:
+        - User is redirected to 'Sign in' page
+
+10. Registration page layout is not broken
+    Steps:
+        1. Click on the 'New Article' link
+        2. Resize browser window
+    Expectation:
+        - Verify that UI looks good
+
+11. User should not be able to sign up with malformed email via UI
+    Steps:
+        1. Open application and click 'Sign up' link
+        2. Insert unique username and some password
+        3. Insert unique invalid email like 'some invalid@mail.com'
+        4. Click 'Sign up' button
+    Expectation:
+        - 'email is invalid' error shows up
+        - user is on the same page
+
+12. User should not be able to sign up with malformed email via REST Api
+    Preconditions:
+        - User is authorized with Basic Authorization
+    Steps:
+        1. Send POST request with some password, unique username and unique invalid email like 'some invalid@mail.com'
+    Expectation:
+        - 4xx error is returned with meaningful error ("is invalid")
 
