@@ -1,0 +1,81 @@
+---  Manual Test Cases for BBlog ----
+
+AREA TO COVER:
+- Creating Articles
+
+LIST OF TESTS:
+
+1. Create an article
+1.1 Create article via UI
+1.2 Create article via REST Api
+1.3 Empty article creation should be blocked
+1.4 User should not be able to create article without authentication via REST Api
+
+2. Read article
+2.1 Article is present in the Global Feed and can be opened from there
+2.2 Article is present on the User's Page and can be opened from there
+2.3 Get the article via REST Api
+
+3. Update Article
+3.1 Article is saved with changes via UI
+3.2 Article is saved with changes via REST Api
+3.3 Changed article is available via the same link
+3.4 Article is not changed until 'Publish Article' button is not clicked (aborting changes)
+3.5 Updating article makes the old version unavailable via UI
+3.6 Updating article makes the old version unavailable via REST Api
+3.7 Update is not available only unauthenticated users (REST Api)
+3.8 Update is available only for authorized users - owners (REST Api)
+
+4. Delete Article
+4.1 Delete existing article via UI
+4.2 Delete existing article via REST Api
+4.3 Delete is not available only for unauthenticated users (REST Api)
+4.4 Delete is available only for authorized users - owners (REST Api)
+
+
+TESTS' SCENARIOS
+1. Create Article
+1.1 Create article via UI
+    Preconditions:
+        - User is authenticated
+    Steps:
+        1. Click on the 'New Article' link
+        2. Insert title, description/abstract and content
+        3. Click 'Publish Article'
+    Expectations:
+        - User is redirected to created article
+        - Title, description/abstract and content are the same as provided
+        - Author and creation date matches current state
+
+1.2 Create article via REST Api
+    Preconditions:
+        - User is authenticated
+    Steps:
+        1. Send POST request with title, description and body to create an article
+    Expectation:
+        - 200 is returned
+        - article in the response matches the request
+        - tag list is set properly
+        - createdAt and updatedAt fields are the same and matching current time
+        - favorited is set to false, favoritesCount equals 0
+        - author's username matches current user
+
+
+1.3 Empty article creation should be blocked
+    Preconditions:
+        - User is authenticated
+    Steps:
+        1. Click on the 'New Article' link
+        2. Click 'Publish Article'
+    Expectation:
+        - Warning or error is displayed
+        - User is not navigated to any other page
+
+1.4 User should not be able to create article without authentication via REST Api
+    Steps:
+        1.
+        2.
+        3.
+    Expectation:
+        -
+

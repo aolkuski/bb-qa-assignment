@@ -1,0 +1,11 @@
+Manual Test Cases for BBlog
+
+Area to cover:
+Registration
+
+1. Register new user
+1.1 Register new user with unique data via UI
+1.2 Register new user with unique data via REST Api
+1.3 Register user with existing mail
+1.4 Register user with blank mail/password
+

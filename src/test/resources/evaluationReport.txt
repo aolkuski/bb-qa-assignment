@@ -1,0 +1,60 @@
+
+
+SUGGESTIONS FOR IMPROVEMENTS
+App entry 'screen'
+- app access behind more sophisticated authentication
+
+User registration form
+- mail verification: no mechanism to verify a mail address
+
+New article creation form
+- missing 'Cancel' button on new article creation
+- missing info how to add tags to article (even grayed out)
+- missing validation on fields length and content
+
+Single article screen
+- 'Edit Article' button at the bottom of the page is grayed out as if it was disabled
+- @prev Edit/Delete Article section is duplicated - the one on the bottom should be removed
+- Navigation to the previous page open 'Your Feed' regardless of the feed opened before
+- 'Likes' count is not shown on the single article page
+- Delete button doesn't trigger confirmation pop up
+
+Feed page
+- Pagination should be limited (for example to first, previous, next 3 pages and last)
+- Popular Tags section should be limited to most popular tags and 'others'
+- Empty tags should not be allowed
+- When feed list is empty and resolution decreased (browser window is narrowed to <765px), tags' list take all available space
+
+Navigation bar
+- Missing Logout button/link (Profile Settings page is not suitable for that action)
+
+Registration page
+- Password requirements are not secure enough
+- Inconsistent behavior: blank username -> sign up button active, but error on click. blank password -> sign up button inactive.
+
+REST Api
+- Missing endpoint for sign out
+- Missing tags update endpoint or ability to update tags with article (or missing info about it in the documentation)
+
+BUGS
+1) Found during exploratory testing
+- Missing src attribute for an image in the 'card-footer' div, on a single article page
+- Tags are not being added to the article
+- Article's abstract/description in not shown on the Single Article page
+- Comments are not persisted, when added from the Single Article page
+- 'Likes' are not persisted in the database
+- Article with too long title can't be created - exceeding 2048 signs causes violation of http length limit
+- Internal application errors are presented to the user not in the meaningful way (example @above)
+
+2) Found during writing scenarios
+- [critical] Token after logout action is still working (logout via UI, token used via REST Api)
+- Slug is not changed once the article's title is changed (should be changed according to the documentation)
+- Once an article is deleted, moving back to previous page (for example profile) results in 404 returned in a json. Only navigation to the main page helps.
+
+3) Found during automation
+
+
+NOTES
+- Data testing should not be done on the UI, thus there ae no such tests
+- Tests are small as possible to give a quick feedback on what is broken (if something is)
+- Areas of my choice are the ones, which are critical for the application to be functional: CRUD on the articles and user registration/login, however due to 'social' function of AUT, I did also consider creating tests for likes, favorites and comments.
