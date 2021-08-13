@@ -3,7 +3,12 @@ package com.backbase.bblog.pageobjects.components;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$x;
 
+import com.backbase.bblog.pageobjects.NewArticlePage;
+import com.backbase.bblog.pageobjects.ProfilePage;
 import com.codeborne.selenide.SelenideElement;
+
+
+import io.qameta.allure.Step;
 
 public class NavigationBarAuthenticated {
 
@@ -16,5 +21,17 @@ public class NavigationBarAuthenticated {
 
     public boolean isUserNameVisible() {
         return userNameLink.isDisplayed();
+    }
+
+    @Step
+    public NewArticlePage openNewArticlePage() {
+        newArticleLink.shouldBe(visible).click();
+        return new NewArticlePage();
+    }
+
+    @Step
+    public ProfilePage openProfilePage() {
+        userNameLink.shouldBe(visible).click();
+        return new ProfilePage();
     }
 }

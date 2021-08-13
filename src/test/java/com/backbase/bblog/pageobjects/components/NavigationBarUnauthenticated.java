@@ -6,11 +6,15 @@ import static com.codeborne.selenide.Selenide.$x;
 import com.backbase.bblog.pageobjects.SignUpPage;
 import com.codeborne.selenide.SelenideElement;
 
+
+import io.qameta.allure.Step;
+
 public class NavigationBarUnauthenticated {
 
     private SelenideElement signInLink = $x("//a[contains(@href, 'login')]");
     private SelenideElement signUpLink = $x("//a[contains(@href, 'register')]");
 
+    @Step
     public SignUpPage openSignUpPage() {
         signUpLink.shouldBe(visible).click();
         return new SignUpPage();

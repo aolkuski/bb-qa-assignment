@@ -29,7 +29,7 @@ public class WaitUtils {
 
     @SuppressWarnings("BusyWait")
     public static void waitForElementToStopMoving(SelenideElement element, long timeoutInMillis) {
-        final long poolingIntervalInMillis = 500;
+        final long POOLING_INTERVAL_LONG = 500L;
         final LocalTime startTime = LocalTime.now();
         Point previousLocation;
         try {
@@ -45,7 +45,7 @@ public class WaitUtils {
                 break;
             }
             try {
-                sleep(poolingIntervalInMillis);
+                sleep(POOLING_INTERVAL_LONG);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -54,12 +54,13 @@ public class WaitUtils {
     }
 
     private static Point getLocation(SelenideElement element) {
+        final long POOLING_INTERVAL_SHORT = 50L;
         Point elementLocation;
         try {
             elementLocation = element.getLocation();
         } catch (StaleElementReferenceException sere) {
             try {
-                sleep(50);
+                sleep(POOLING_INTERVAL_SHORT);
             } catch (InterruptedException e) {
                 //wait a moment to retry
             }
@@ -69,12 +70,13 @@ public class WaitUtils {
     }
 
     public static void waitForCondition(Callable<Boolean> condition, long timeoutInMillis) {
+        final long POOLING_INTERVAL_SHORT = 50L;
         WebDriver webDriver = WebDriverRunner.getWebDriver();
         try {
             await()
                     .atMost(timeoutInMillis, MILLISECONDS)
                     .ignoreExceptions()
-                    .pollInterval(20, MILLISECONDS)
+                    .pollInterval(POOLING_INTERVAL_SHORT, MILLISECONDS)
                     .until(() -> {
                         WebDriverRunner.setWebDriver(webDriver);
                         return condition.call();

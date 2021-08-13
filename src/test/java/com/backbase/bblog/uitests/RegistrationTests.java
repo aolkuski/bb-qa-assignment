@@ -1,4 +1,4 @@
-package com.backbase.bblog.tests;
+package com.backbase.bblog.uitests;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
@@ -10,8 +10,8 @@ import com.backbase.bblog.pageobjects.HomePageAuthenticated;
 
 public class RegistrationTests extends BaseUiTest {
 
-    @Tag("ui")
     @Test
+    @Tag("ui")
     public void successfulSignUpTest() {
         String userName = "user" + randomString;
         HomePageAuthenticated homePageAuthenticated = homePage
