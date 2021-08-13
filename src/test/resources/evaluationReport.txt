@@ -51,6 +51,7 @@ BUGS
 - "Required fields" presence for article creation is not validated ('description' and 'body') can be missing
 
 3) Found during automation
+- Username is not preserving capital letters
 
 
 NOTES
@@ -58,3 +59,4 @@ NOTES
 - Tests are small as possible to give a quick feedback on what is broken (if something is)
 - Areas of my choice are the ones, which are critical for the application to be functional: creating the articles and user registration.
 - Looking at the assignment body, 'CRUD Articles' may look like a single functionality, however I decided that these are 4 functionalities which can be implemented independently. Therefore, tests cases cover only 1 of them (+ registration as another functionality).
+- To get report, run tests using 'mvn clean test' command. Then run 'mvn allure:report.

@@ -29,3 +29,11 @@ hs_err_pid*
 .DS_Store
 .idea
 .idea/
+
+# allure
+.allure
+allure-results
+
+# others
+build
+target
