@@ -11,14 +11,21 @@ import java.util.concurrent.Callable;
 import org.awaitility.core.ConditionTimeoutException;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.StaleElementReferenceException;
+import org.openqa.selenium.WebDriver;
 
+import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.SelenideElement;
+import com.codeborne.selenide.WebDriverRunner;
 
 
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class WaitUtils {
+
+    public static void waitForElementToStopMoving(SelenideElement element) {
+        waitForElementToStopMoving(element, Configuration.pageLoadTimeout);
+    }
 
     @SuppressWarnings("BusyWait")
     public static void waitForElementToStopMoving(SelenideElement element, long timeoutInMillis) {
@@ -44,7 +51,6 @@ public class WaitUtils {
             }
             previousLocation = getLocation(element);
         }
-
     }
 
     private static Point getLocation(SelenideElement element) {
@@ -63,12 +69,16 @@ public class WaitUtils {
     }
 
     public static void waitForCondition(Callable<Boolean> condition, long timeoutInMillis) {
+        WebDriver webDriver = WebDriverRunner.getWebDriver();
         try {
             await()
                     .atMost(timeoutInMillis, MILLISECONDS)
                     .ignoreExceptions()
-                    .pollInterval(10, MILLISECONDS)
-                    .until(condition);
+                    .pollInterval(20, MILLISECONDS)
+                    .until(() -> {
+                        WebDriverRunner.setWebDriver(webDriver);
+                        return condition.call();
+                    });
         } catch (ConditionTimeoutException e) {
             log.warn("Wait condition not met! " + condition.toString());
         }

@@ -17,7 +17,7 @@ public class HomePageAuthenticated extends BasePage {
     @Override
     protected void waitForPageContent() {
         WaitUtils.waitForElementToStopMoving($x("//footer//a"), Configuration.pageLoadTimeout);
-        WaitUtils.waitForCondition(() -> getNavigationBar().isUserNameVisible(), 2000L);
+        WaitUtils.waitForCondition(() -> $x("//a[contains(text(), 'Your Feed') and contains(@class, 'active')]").exists(), 10000L);
     }
 
     public NavigationBarAuthenticated getNavigationBar() {
