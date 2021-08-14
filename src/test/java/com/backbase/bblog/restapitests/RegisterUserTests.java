@@ -1,4 +1,4 @@
-package com.backbase.bblog.restapi;
+package com.backbase.bblog.restapitests;
 
 import static io.restassured.RestAssured.given;
 import static io.restassured.http.ContentType.JSON;

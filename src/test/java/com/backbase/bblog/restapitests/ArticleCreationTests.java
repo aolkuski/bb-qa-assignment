@@ -1,6 +1,6 @@
-package com.backbase.bblog.restapi;
+package com.backbase.bblog.restapitests;
 
-import static com.backbase.bblog.uitesting.testutils.DateTimeUtils.getZonedDateTimeFromString;
+import static com.backbase.bblog.uitests.testutils.DateTimeUtils.getZonedDateTimeFromString;
 import static io.restassured.RestAssured.given;
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 

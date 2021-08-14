@@ -1,4 +1,4 @@
-package com.backbase.bblog.uitesting.testutils;
+package com.backbase.bblog.uitests.testutils;
 
 import java.time.LocalDateTime;
 import java.time.ZonedDateTime;

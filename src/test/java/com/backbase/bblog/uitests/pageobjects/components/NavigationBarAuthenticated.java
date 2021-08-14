@@ -1,10 +1,10 @@
-package com.backbase.bblog.uitesting.pageobjects.components;
+package com.backbase.bblog.uitests.pageobjects.components;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$x;
 
-import com.backbase.bblog.uitesting.pageobjects.NewArticlePage;
-import com.backbase.bblog.uitesting.pageobjects.ProfilePage;
+import com.backbase.bblog.uitests.pageobjects.NewArticlePage;
+import com.backbase.bblog.uitests.pageobjects.ProfilePage;
 import com.codeborne.selenide.SelenideElement;
 
 

@@ -1,4 +1,4 @@
-package com.backbase.bblog.uitesting.tests;
+package com.backbase.bblog.uitests.tests;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import com.backbase.bblog.baseclasses.BaseUiTest;
-import com.backbase.bblog.uitesting.pageobjects.HomePageAuthenticated;
+import com.backbase.bblog.uitests.pageobjects.HomePageAuthenticated;
 
 public class RegistrationTests extends BaseUiTest {
 

@@ -1,11 +1,11 @@
-package com.backbase.bblog.uitesting.pageobjects;
+package com.backbase.bblog.uitests.pageobjects;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$$x;
 import static com.codeborne.selenide.Selenide.$x;
 
-import com.backbase.bblog.uitesting.pageobjects.components.NavigationBarAuthenticated;
-import com.backbase.bblog.uitesting.testutils.WaitUtils;
+import com.backbase.bblog.uitests.pageobjects.components.NavigationBarAuthenticated;
+import com.backbase.bblog.uitests.testutils.WaitUtils;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 

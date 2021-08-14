@@ -1,4 +1,4 @@
-package com.backbase.bblog.uitesting.testutils;
+package com.backbase.bblog.uitests.testutils;
 
 import static java.lang.Thread.sleep;
 import static java.util.concurrent.TimeUnit.MILLISECONDS;

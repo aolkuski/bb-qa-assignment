@@ -4,7 +4,7 @@ import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 
-import com.backbase.bblog.uitesting.pageobjects.HomePageUnauthenticated;
+import com.backbase.bblog.uitests.pageobjects.HomePageUnauthenticated;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 

@@ -1,4 +1,4 @@
-package com.backbase.bblog.uitesting.tests;
+package com.backbase.bblog.uitests.tests;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
@@ -12,9 +12,9 @@ import org.junit.jupiter.api.Test;
 import com.backbase.bblog.baseclasses.BaseUiTest;
 import com.backbase.bblog.dataobjects.Article;
 import com.backbase.bblog.dataobjects.Author;
-import com.backbase.bblog.uitesting.pageobjects.HomePageAuthenticated;
-import com.backbase.bblog.uitesting.pageobjects.SingleArticlePage;
-import com.backbase.bblog.uitesting.testutils.DateTimeUtils;
+import com.backbase.bblog.uitests.pageobjects.HomePageAuthenticated;
+import com.backbase.bblog.uitests.pageobjects.SingleArticlePage;
+import com.backbase.bblog.uitests.testutils.DateTimeUtils;
 
 public class ArticleCreationTests extends BaseUiTest {
     HomePageAuthenticated mainPage;
