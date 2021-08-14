@@ -1,4 +1,4 @@
-package com.backbase.bblog.pageobjects;
+package com.backbase.bblog.uitesting.pageobjects;
 
 import static com.codeborne.selenide.Condition.attribute;
 import static com.codeborne.selenide.Condition.visible;

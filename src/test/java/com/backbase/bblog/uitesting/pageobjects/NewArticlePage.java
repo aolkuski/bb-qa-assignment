@@ -1,10 +1,10 @@
-package com.backbase.bblog.pageobjects;
+package com.backbase.bblog.uitesting.pageobjects;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$x;
 
 import com.backbase.bblog.dataobjects.Article;
-import com.backbase.bblog.testutils.WaitUtils;
+import com.backbase.bblog.uitesting.testutils.WaitUtils;
 import com.codeborne.selenide.SelenideElement;
 
 
@@ -40,9 +40,10 @@ public class NewArticlePage extends BasePage {
         return this;
     }
 
+    @Step
     public NewArticlePage fillTextFields(Article article) {
         return fillTextFields(article.getTitle(), article.getDescription(), article.getBody(),
-                String.join(" ", article.getTagList()));
+                article.getTagList() != null ? String.join(" ", article.getTagList()) : null);
     }
 
     @Step

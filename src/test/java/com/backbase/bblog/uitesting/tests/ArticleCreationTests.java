@@ -1,4 +1,4 @@
-package com.backbase.bblog.uitests;
+package com.backbase.bblog.uitesting.tests;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
@@ -12,9 +12,9 @@ import org.junit.jupiter.api.Test;
 import com.backbase.bblog.baseclasses.BaseUiTest;
 import com.backbase.bblog.dataobjects.Article;
 import com.backbase.bblog.dataobjects.Author;
-import com.backbase.bblog.pageobjects.HomePageAuthenticated;
-import com.backbase.bblog.pageobjects.SingleArticlePage;
-import com.backbase.bblog.testutils.DateTimeUtils;
+import com.backbase.bblog.uitesting.pageobjects.HomePageAuthenticated;
+import com.backbase.bblog.uitesting.pageobjects.SingleArticlePage;
+import com.backbase.bblog.uitesting.testutils.DateTimeUtils;
 
 public class ArticleCreationTests extends BaseUiTest {
     HomePageAuthenticated mainPage;
@@ -38,13 +38,14 @@ public class ArticleCreationTests extends BaseUiTest {
 
     @Test
     @Tag("ui")
-    public void successfulSimpleArticleCreation() {
-        Article simpleArticle = new Article()
-                .withTitle("Article's Title " + randomString)
-                .withDescription("Article's Description " + randomString)
-                .withBody("Article's Body " + randomString)
-                .withAuthor(new Author().withUsername(userName.toLowerCase()))
-                .withCreatedAt(DateTimeUtils.getCurrentDateInSimpleFormat());
+    public void userShouldBeAbleToCreateSimpleArticle() {
+        Article simpleArticle = Article.builder()
+                .title("Article's Title " + randomString)
+                .description("Article's Description " + randomString)
+                .body("Article's Body " + randomString)
+                .author(Author.builder().username(userName.toLowerCase()).build())
+                .createdAt(DateTimeUtils.getCurrentDateInSimpleFormat())
+                .build();
 
         SingleArticlePage singleArticlePage = mainPage
                 .getNavigationBar()
@@ -60,14 +61,15 @@ public class ArticleCreationTests extends BaseUiTest {
 
     @Test
     @Tag("ui")
-    public void successfulFullArticleCreation() {
-        Article article = new Article()
-                .withTitle("Article's Title " + randomString)
-                .withDescription("Article's Description " + randomString)
-                .withBody("Article's Body " + randomString)
-                .withTagList(Arrays.asList("tag1", "tag2", "tag3"))
-                .withAuthor(new Author().withUsername(userName.toLowerCase()))
-                .withCreatedAt(DateTimeUtils.getCurrentDateInSimpleFormat());
+    public void userShouldBeAbleToCreateArticle() {
+        Article article = Article.builder()
+                .title("Article's Title " + randomString)
+                .description("Article's Description " + randomString)
+                .body("Article's Body " + randomString)
+                .tagList(Arrays.asList("tag1", "tag2", "tag3"))
+                .author(Author.builder().username(userName.toLowerCase()).build())
+                .createdAt(DateTimeUtils.getCurrentDateInSimpleFormat())
+                .build();
 
         Article mostRecentArticle = mainPage
                 .getNavigationBar()

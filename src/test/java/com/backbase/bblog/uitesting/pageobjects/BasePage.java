@@ -1,4 +1,4 @@
-package com.backbase.bblog.pageobjects;
+package com.backbase.bblog.uitesting.pageobjects;
 
 public abstract class BasePage {
 

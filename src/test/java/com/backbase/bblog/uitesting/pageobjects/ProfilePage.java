@@ -1,11 +1,11 @@
-package com.backbase.bblog.pageobjects;
+package com.backbase.bblog.uitesting.pageobjects;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$x;
 
 import com.backbase.bblog.dataobjects.Article;
 import com.backbase.bblog.dataobjects.Author;
-import com.backbase.bblog.testutils.WaitUtils;
+import com.backbase.bblog.uitesting.testutils.WaitUtils;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
@@ -34,11 +34,12 @@ public class ProfilePage extends BasePage {
     }
 
     public Article getMostRecentArticle() {
-        return new Article()
-                .withAuthor(new Author().withUsername(latestArticlePublisher.shouldBe(visible).getText().trim()))
-                .withCreatedAt(latestArticleCreationDate.getText().trim())
-                .withTitle(latestArticleTitle.getText().trim())
-                .withDescription(latestArticleDescription.getText().trim())
-                .withTagList(latestArticleTags.texts());
+        return Article.builder()
+                .author(Author.builder().username(latestArticlePublisher.shouldBe(visible).getText().trim()).build())
+                .createdAt(latestArticleCreationDate.getText().trim())
+                .title(latestArticleTitle.getText().trim())
+                .description(latestArticleDescription.getText().trim())
+                .tagList(latestArticleTags.texts())
+                .build();
     }
 }
