@@ -2,8 +2,8 @@
 
 ### TEST CASES ###
 
-1) ./manualtestcases/createArticleTestCases.txt
-2) ./manualtestcases/registerUserTestCases.txt
+1) src/test/resources/manualtestcases/createArticleTestCases.txt
+2) src/test/resources/manualtestcases/registerUserTestCases.txt
 
 ### REST API TESTS ###
 
@@ -13,6 +13,8 @@
 ### UI TESTS ###
 
 1) com.backbase.bblog.uitests.tests.ArticleCreationTests.java
+    1) **userShouldBeAbleToCreateArticle() test should fail with the following
+       message `Tag lists differs!`**
 2) com.backbase.bblog.uitests.tests.RegistrationTests.java
 
 ### EVALUATION REPORT ###
@@ -72,7 +74,7 @@ but that is a question for a developer of this app.
 ### AUTOMATIC REPORT ###
 
 Report is being automatically generated after each run. If the following run is started with 'clean'
-option, then the history of runs is erased, because the raport is generated into 'target' directory.
+option, then the history of runs is erased, because the report is generated into 'target' directory.
 Since the tool used for reporting is Allure, to view the report, 'mvn allure:report' command needs
 to be run in the root directory of the project to get index.html file (located in '
 target/site/index.html'). The other option is running 'mvn allure:serve', which will display a
@@ -128,36 +130,14 @@ REST Api
 
 ### HEADLESS MODE ###
 
-BUGS
+To run tests in the headless mode (from console) use a system parameter  `-Dselenide.headless=true`,
+when running tests. To run tests in the headless mode from IDE, go to the BaseUiTest and add a line
+in the setup method (line 26): `Configuration.headless = true;`. Recompile tests and run them.
 
-1) Found during exploratory testing
+### ABOUT NOT OVERENGINEERING ###
 
-- Missing src attribute for an image in the 'card-footer' div, on a single article page
-- Tags are not being added to the article
-- Article's abstract/description in not shown on the Single Article page
-- Comments are not persisted, when added from the Single Article page
-- 'Likes' are not persisted in the database
-- Article with too long title can't be created - exceeding 2048 signs causes violation of http
-  length limit
-- Internal application errors are presented to the user not in the meaningful way (example @above)
-
-2) Found during writing scenarios
-
-- [critical] Token after logout action is still working (logout via UI, token used via REST Api)
-- Slug is not changed once the article's title is changed (should be changed according to the
-  documentation)
-- Once an article is deleted, moving back to previous page (for example profile) results in 404
-  returned in a json. Only navigation to the main page helps.
-- "Required fields" presence for article creation is not validated ('description' and 'body') can be
-  missing
-
-3) Found during automation
-
-- Username is not preserving capital letters
-
-NOTES
-
-- Looking at the assignment body, 'CRUD Articles' may look like a single functionality, however I
-  decided that these are 4 functionalities which can be implemented independently. Therefore, tests
-  cases cover only 1 of them (+ registration as another functionality).
-- To get report, run tests using 'mvn clean test' command. Then run 'mvn allure:report.
+Setup created in classes is not the best example, however, the quickest one. In a real-life case,
+this should be moved to yaml file and managed by springboot. Also setting up all the code in the '
+test' directory is an arguable thing, but it enables a quick plugging into the project with the
+application. Frameworks I worked on so far, that were not in the same repo as the application, had
+only tests in the 'test' directory. 

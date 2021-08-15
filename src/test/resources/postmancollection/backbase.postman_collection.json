@@ -1,0 +1,182 @@
+{
+  "variables": [],
+  "info": {
+    "name": "backbase",
+    "_postman_id": "61765089-f8f9-8afa-6057-51e673aeebb5",
+    "description": "",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Authentication",
+      "request": {
+        "url": "{{host}}/api/users/login",
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Basic Y2FuZGlkYXRleDpxYS1pcy1jb29s",
+            "description": ""
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "description": ""
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"user\":{\n    \"email\": \"mail@mail.mail\",\n    \"password\": \"password\"\n  }\n}"
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "name": "Registration",
+      "request": {
+        "url": "{{host}}/api/users",
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "description": ""
+          },
+          {
+            "key": "Authorization",
+            "value": "Basic Y2FuZGlkYXRleDpxYS1pcy1jb29s",
+            "description": ""
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"user\":{\n    \"username\": \"username12311111132311sss\",\n    \"email\": \"sssiii@iii.pl\"\n  }\n}"
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "name": "Article creation",
+      "request": {
+        "url": "{{host}}/api/articles",
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "description": ""
+          },
+          {
+            "key": "Authorization",
+            "value": "Basic Y2FuZGlkYXRleDpxYS1pcy1jb29s",
+            "description": ""
+          },
+          {
+            "key": "jwtauthorization",
+            "value": "Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMTNiMzNjZjcyZWQwMjcwNmFkMzY5NiIsInVzZXJuYW1lIjoiYW8zIiwiZXhwIjoxNjMzODY1NjU0LCJpYXQiOjE2Mjg2ODE2NTR9.hOhtLK_A8e3XXC6Oco1f9fQ6t71TQ6nygcyuDRZsGiU",
+            "description": ""
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"article\": {\n    \"title\": \"How to train your logged out dragon \",\n    \"description\": \"Ever wonder how?\",\n    \"body\": \"You have to believe\",\n    \"tagList\": [\"magic\", \"cool\", \"dragons\"]\n  }\n}"
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "name": "Article update",
+      "request": {
+        "url": "{{host}}/api/articles/how-to-train-your-logged-out-dragon-1r9p2a",
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "description": ""
+          },
+          {
+            "key": "Authorization",
+            "value": "Basic Y2FuZGlkYXRleDpxYS1pcy1jb29s",
+            "description": ""
+          },
+          {
+            "key": "jwtauthorization",
+            "value": "Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMTNiMzNjZjcyZWQwMjcwNmFkMzY5NiIsInVzZXJuYW1lIjoiYW8zIiwiZXhwIjoxNjMzODc1ODg3LCJpYXQiOjE2Mjg2OTE4ODd9.xjmDTjJQyjVVOfGZRZ60S3DtnS86jPp7-d5FBS9oNMo",
+            "description": ""
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"article\": {\n    \"title\": \"Did you train your changed dragon?\",\n    \"body\": \"changed body\",\n    \"description\": \"changed description\"\n  }\n}"
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "name": "Article delete",
+      "request": {
+        "url": "{{host}}/api/articles/how-to-train-your-logged-out-dragon-1r9p2a",
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "description": ""
+          },
+          {
+            "key": "Authorization",
+            "value": "Basic Y2FuZGlkYXRleDpxYS1pcy1jb29s",
+            "description": ""
+          },
+          {
+            "key": "jwtauthorization",
+            "value": "Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMTNiMzNjZjcyZWQwMjcwNmFkMzY5NiIsInVzZXJuYW1lIjoiYW8zIiwiZXhwIjoxNjMzODc1ODg3LCJpYXQiOjE2Mjg2OTE4ODd9.xjmDTjJQyjVVOfGZRZ60S3DtnS86jPp7-d5FBS9oNMo",
+            "description": ""
+          }
+        ],
+        "body": {},
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "name": "Article read",
+      "request": {
+        "url": "{{host}}/api/articles/how-to-train-your-logged-out-dragon-1r9p2a",
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Basic Y2FuZGlkYXRleDpxYS1pcy1jb29s",
+            "description": ""
+          }
+        ],
+        "body": {},
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "name": "Article get list",
+      "request": {
+        "url": "{{host}}/api/articles",
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Basic Y2FuZGlkYXRleDpxYS1pcy1jb29s",
+            "description": ""
+          }
+        ],
+        "body": {},
+        "description": ""
+      },
+      "response": []
+    }
+  ]
+}

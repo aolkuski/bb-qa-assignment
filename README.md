@@ -3,11 +3,11 @@
 ## Running tests
 
 0. Prerequisites:
-    1. java jdk installed
-    2. mvn installed
-    3. web browser installed
-    4. JAVA_HOME variable setup correctly
-    5. Command line tool
+   1. latest java jdk installed
+   2. latest mvn installed
+   3. updated (latest) Chrome browser
+   4. JAVA_HOME variable setup correctly
+   5. Command line tool
 1. Checkout the project
 2. Open command line tool
 3. Go to the project's root directory
