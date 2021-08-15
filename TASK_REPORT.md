@@ -136,8 +136,8 @@ in the setup method (line 26): `Configuration.headless = true;`. Recompile tests
 
 ### ABOUT NOT OVERENGINEERING ###
 
-Setup created in classes is not the best example, however, the quickest one. In a real-life case,
-this should be moved to yaml file and managed by springboot. Also setting up all the code in the '
+UI tests' config created in the BaseUiTest class is not the best example, however, the quickest one.
+In a real-life case, this should be moved to yaml file and managed by springboot. Also setting up
+all the code in the '
 test' directory is an arguable thing, but it enables a quick plugging into the project with the
-application. Frameworks I worked on so far, that were not in the same repo as the application, had
-only tests in the 'test' directory. 
+application. 
